@@ -68,9 +68,9 @@
             <div class="input-form">
                <form method="post" name="noticeboard" action="noticeboard" class="noticeboard" onsubmit="return validate_form(this)">
                      <label><b>Name:</b></label>
-                     <input type="text" placeholder="Enter Name" id="name" name="name" value="<%= Encode.forHtmlAttribute(name) %>">
+                     <input type="text" placeholder="Enter Name" id="name" name="name" value= "<%=Encode.forHtml(name) %>" >
                      <label><b>Message:</b></label>
-                     <input type="text" placeholder="Enter Message" id="comments" name="comments" value="<%= Encode.forHtmlAttribute(comments) %>">
+                     <input type="text" placeholder="Enter Message" id="comments" name="comments" >
                      <button name="submit" type="submit" value="submit">Submit</button>
                </form>
             </div>

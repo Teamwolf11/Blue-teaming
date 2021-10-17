@@ -1,6 +1,7 @@
 // Import required java libraries
 import java.io.*;
 
+
 // Java Servlet imports
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,6 +17,8 @@ import java.sql.ResultSet;
 // Hashing imports
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.nio.charset.StandardCharsets;
+
 
 @WebServlet(name = "login", urlPatterns = {
  "/login"
@@ -46,9 +49,15 @@ public class Login extends HttpServlet {
    String hashedPassword = null;
    try 
    {
-       hashedPassword = Hashing.generateHashValue(password, salt);
+    //    hashedPassword = Hashing.generateHashValue(password, salt);
+
+    char[] passwordChars = password.toCharArray();
+    byte[] saltBytes = salt.getBytes();
+    byte[] hashedBytes = PBKDF.hashPassword(passwordChars, saltBytes,10, 512);
+    hashedPassword = new String(hashedBytes, StandardCharsets.UTF_8);
+    System.out.println(hashedPassword);
    }
-   catch (NoSuchAlgorithmException | NoSuchProviderException e)
+   catch (Exception e)
    {
        e.printStackTrace();
    }

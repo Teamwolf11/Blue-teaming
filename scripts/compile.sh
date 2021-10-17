@@ -14,11 +14,11 @@ echo ">>> Working directory: `pwd`"
 echo ">>> Starting build and deployment for E Corp..."
 
 # Compile each of the three .java files
-sudo javac -classpath WEB-INF/lib/servlet-api.jar WEB-INF/classes/Login.java WEB-INF/classes/Hashing.java
+sudo javac -classpath WEB-INF/lib/servlet-api.jar WEB-INF/classes/Login.java WEB-INF/classes/Hashing.java WEB-INF/classes/PBKDF.java
 if [ ! $? -eq 0 ]; then
    error_checking_output "  > Compiling Login.java and Hashing.java failed. Exiting."
 fi
-sudo javac -classpath WEB-INF/lib/servlet-api.jar WEB-INF/classes/Noticeboard.java
+sudo javac -classpath WEB-INF/lib/\* WEB-INF/classes/Noticeboard.java 
 if [ ! $? -eq 0 ]; then
    error_checking_output "  > Compiling Noticeboard.java failed. Exiting."
 fi

@@ -53,12 +53,13 @@ public class Login extends HttpServlet {
 
     char[] passwordChars = password.toCharArray();
     byte[] saltBytes = salt.getBytes();
-    byte[] hashedBytes = PBKDF.hashPassword(passwordChars, saltBytes,10, 512);
-    hashedPassword = new String(hashedBytes, StandardCharsets.UTF_8);
-    System.out.println(hashedPassword);
+    byte[] hashedBytes = PBKDF.hashPassword(passwordChars, saltBytes,10, 256);
+    hashedPassword = toHexString(hashedBytes);
+    System.out.println("This is the password" +hashedPassword);
    }
    catch (Exception e)
    {
+       System.out.println("it has failed the hashing in login.java");
        e.printStackTrace();
    }
    
@@ -107,7 +108,17 @@ public class Login extends HttpServlet {
    out.close();
   }
  }
- 
+ public static String toHexString(byte[] bytes) {
+    char[] hexArray = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    char[] hexChars = new char[bytes.length * 2];
+    int v;
+    for ( int j = 0; j < bytes.length; j++ ) {
+        v = bytes[j] & 0xFF;
+        hexChars[j*2] = hexArray[v/16];
+        hexChars[j*2 + 1] = hexArray[v%16];
+    }
+    return new String(hexChars);
+}
  /**
   * Handles the HTTP GET method.
   * @param request servlet request

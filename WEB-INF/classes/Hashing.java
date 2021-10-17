@@ -20,11 +20,11 @@ import java.security.NoSuchProviderException;
 
 public class Hashing {
 
- 	public static String generateMD5HashValue(String password, String salt) throws NoSuchAlgorithmException, NoSuchProviderException {
+ 	public static String generateHashValue(String password, String salt) throws NoSuchAlgorithmException, NoSuchProviderException {
 		String generatedPassword = null;
 		try {
-			// Create MessageDigest instance for MD5
-			MessageDigest md = MessageDigest.getInstance("MD5");
+			// Create MessageDigest instance for SHA-1
+			MessageDigest md = MessageDigest.getInstance("SHA-1");
 
             // Combine salt (string in base64) with password (string)
             String passwordToHash = salt + password;

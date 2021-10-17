@@ -14,7 +14,7 @@
              // Fetch the name and comments form entries
              var name = thisform.name.value;
              var comments = thisform.comments.value;
-
+            
              // Perform checks on user input
              if (name == "" || name == null)
              {
@@ -68,7 +68,7 @@
             <div class="input-form">
                <form method="post" name="noticeboard" action="noticeboard" class="noticeboard" onsubmit="return validate_form(this)">
                      <label><b>Name:</b></label>
-                     <input type="text" placeholder="Enter Name" id="name" name="name" value= "<%=Encode.forHtml(name) %>" >
+                     <input type="text" placeholder="Enter Name" id="name" name="name" value="<%= Encode.forHtmlAttribute(name) %>" >
                      <label><b>Message:</b></label>
                      <input type="text" placeholder="Enter Message" id="comments" name="comments" >
                      <button name="submit" type="submit" value="submit">Submit</button>

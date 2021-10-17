@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
    String hashedPassword = null;
    try 
    {
-       hashedPassword = Hashing.generateMD5HashValue(password, salt);
+       hashedPassword = Hashing.generateHashValue(password, salt);
    }
    catch (NoSuchAlgorithmException | NoSuchProviderException e)
    {
